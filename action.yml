@@ -42,6 +42,6 @@ runs:
         gunzip "$tmp/$name.gz"
         chmod +x "$tmp/$name"
 
-        mkdir "$HOME/bin"
-        mv "$tmp/$name" "$HOME/bin/auto"
-        echo "$HOME/bin" >> $GITHUB_PATH
+        mkdir -p "$GITHUB_WORKSPACE/tools"
+        mv "$tmp/$name" "$GITHUB_WORKSPACE/tools/auto"
+        echo "$GITHUB_WORKSPACE/tools" >> $GITHUB_PATH
