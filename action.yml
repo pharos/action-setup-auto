@@ -34,7 +34,7 @@ runs:
         [ '${{ runner.os }}' == 'macOS' ] && platform='macos'
         [ '${{ runner.os }}' == 'Windows' ] && platform='win.exe'
         name="auto-${platform}"
-        tmp="${{ runner.temp }}"
+        tmp="${RUNNER_TEMP}"
 
         link=$(curl -sL "https://api.github.com/repos/intuit/auto/releases/${{ inputs.version }}" | jq -r ".assets | .[] | select(.name == \"$name.gz\") | .browser_download_url")
         curl -sL $link -H "Accept: application/octet-stream" -o "$tmp/$name.gz"
